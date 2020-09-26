@@ -1,6 +1,6 @@
 node {
 
-sh """
+sh '''
    #!/bin/bash
    GIT_PREVIOUS_COMMIT=$(git rev-parse --short "HEAD^")
    GIT_COMMIT=$(git rev-parse --short HEAD)
@@ -10,5 +10,5 @@ sh """
    } else {
    echo "Changed"
    }
-"""
+'''
 }
