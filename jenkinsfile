@@ -1,5 +1,20 @@
 node {
    sh 'env'
-   sh 'git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT ui'
-  
+
+         def scmVars = checkout([
+        $class: 'GitSCM',
+          branches: [[name: '${GIT_BRANCH}']],
+          userRemoteConfigs: [[credentialsId: '', name: 'origin',
+            refspec: '$GERRIT_REFSPEC:$GERRIT_REFSPEC',
+            url: 'https://github.com/rameshthoomu/jenkins_commits']]])
+                  // Display the variable using scmVars
+      echo "scmVars.GIT_COMMIT"
+      echo "${scmVars.GIT_COMMIT}"
+
+      // Displaying the variables saving it as environment variable
+      env.GIT_COMMIT = scmVars.GIT_COMMIT
+      echo "env.GIT_COMMIT"
+      echo "${env.GIT_COMMIT}"
+      echo "scmVars.GIT_PREVIOUS_SUCCESSFUL_COMMIT"
+         sh 'env'
 }
