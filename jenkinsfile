@@ -13,12 +13,14 @@ stage ("clone") {
       // Displaying the variables saving it as environment variable
       env.GIT_COMMIT = scmVars.GIT_COMMIT
       echo "env.GIT_COMMIT"
+      env.GIT_PREVIOUS_SUCCESSFUL_COMMIT = scmVars.GIT_PREVIOUS_SUCCESSFUL_COMMIT
       echo "${env.GIT_COMMIT}"
+      env.GIT_PREVIOUS_SUCCESSFUL_COMMIT=
       echo "${scmVars.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
          sh 'env'
    }
    stage("next stage") {
     echo "${env.GIT_COMMIT}"
-echo "${scmVars.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
+echo "${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
 }
 }
