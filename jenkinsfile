@@ -1,8 +1,8 @@
 node {
 
 sh '''
-   GIT_PREVIOUS_COMMIT=${git rev-parse --short "HEAD^"}
-   GIT_COMMIT=${git rev-parse --short HEAD}
+   GIT_PREVIOUS_COMMIT = ${git rev-parse --short "HEAD^"}
+   GIT_COMMIT = ${git rev-parse --short HEAD}
    CHANGED = sh(returnStdout: true, script: 'git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT ui').trim()
    if ($CHANGED == ' ') {
      echo "no changed"
