@@ -19,8 +19,10 @@ stage ("clone") {
          sh 'env'
    }
    stage("next stage") {
-    echo "${GIT_COMMIT}"
-echo "${GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
+    echo "$GIT_COMMIT"
+echo "$GIT_PREVIOUS_SUCCESSFUL_COMMIT"
+   CHANGED=${git diff --name-only $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT ui}
+   echo $CHANGED
    
 }
 }
