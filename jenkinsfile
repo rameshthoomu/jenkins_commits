@@ -6,7 +6,14 @@ pipeline {
             steps {
                 echo 'Hello World'
                 sh 'env'
-                sh 'git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT ui'
+               sh  'GIT_PREVIOUS_COMMIT=$(git rev-parse --short "HEAD^")'
+               sh 'GIT_COMMIT=$(git rev-parse --short HEAD)'
+              sh 'CHANGED=$(git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT ui)'
+              if [ -z "$CHANGED" ]; then
+    echo "No changes dettected..."
+else
+    echo "Directory changed"
+fi
             }
         }
     }
