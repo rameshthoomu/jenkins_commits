@@ -1,5 +1,5 @@
 node {
    sh 'env'
-   git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT ui
+   sh 'git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT ui'
   
 }
