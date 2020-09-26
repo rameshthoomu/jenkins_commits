@@ -4,9 +4,7 @@ node {
          def scmVars = checkout([
         $class: 'GitSCM',
           branches: [[name: '${GIT_BRANCH}']],
-          userRemoteConfigs: [[credentialsId: '', name: 'origin',
-            refspec: '$GERRIT_REFSPEC:$GERRIT_REFSPEC',
-            url: 'https://github.com/rameshthoomu/jenkins_commits']]])
+          userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/rameshthoomu/jenkins_commits']]])
                   // Display the variable using scmVars
       echo "scmVars.GIT_COMMIT"
       echo "${scmVars.GIT_COMMIT}"
