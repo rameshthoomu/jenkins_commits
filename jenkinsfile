@@ -1,22 +1,13 @@
-pipeline {
-    agent any
-
-    stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
-                sh 'env'
-               sh  'GIT_PREVIOUS_COMMIT=$(git rev-parse --short "HEAD^")'
-               sh 'GIT_COMMIT=$(git rev-parse --short HEAD)'
-              sh 'CHANGED=$(git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT ui)'
-
-if(-z $CHANGED) {
-    echo “no changes”
+node {
+sh “””
+GIT_PREVIOUS_COMMIT=$(git rev-parse --short "HEAD^")
+GIT_COMMIT=$(git rev-parse --short HEAD)
+CHANGED =$(git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT ui)
+if ( -z $CHANGED) {
+ echo “no changed”
 } 
 else {
-   echo “changed”
+echo “Changed”
 }
-            }
-        }
-    }
-}
+“””
+   
