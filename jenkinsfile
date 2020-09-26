@@ -3,7 +3,7 @@ sh “””
 GIT_PREVIOUS_COMMIT = '$(git rev-parse --short "HEAD^")'
 GIT_COMMIT = '$(git rev-parse --short HEAD)'
 CHANGED = '$(git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT ui)'
-if (( -z $CHANGED )) {
+if -z $CHANGED {
  echo “no changed”
 } 
 else {
