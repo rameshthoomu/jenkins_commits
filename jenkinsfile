@@ -15,7 +15,6 @@ stage ("clone") {
       echo "env.GIT_COMMIT"
       env.GIT_PREVIOUS_SUCCESSFUL_COMMIT = scmVars.GIT_PREVIOUS_SUCCESSFUL_COMMIT
       echo "${env.GIT_COMMIT}"
-      env.GIT_PREVIOUS_SUCCESSFUL_COMMIT=
       echo "${scmVars.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
          sh 'env'
    }
