@@ -1,4 +1,5 @@
 node {
+stage ("clone") {
    sh 'env'
 
          def scmVars = checkout([
@@ -15,4 +16,9 @@ node {
       echo "${env.GIT_COMMIT}"
       echo "${scmVars.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
          sh 'env'
+   }
+   stage("next stage") {
+    echo "${env.GIT_COMMIT}"
+echo "${scmVars.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
+}
 }
