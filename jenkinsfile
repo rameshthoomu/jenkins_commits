@@ -6,6 +6,7 @@ pipeline {
             steps {
                 echo 'Hello World'
                 sh 'env'
+                sh 'git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT'
             }
         }
     }
