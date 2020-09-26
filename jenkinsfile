@@ -19,7 +19,8 @@ stage ("clone") {
          sh 'env'
    }
    stage("next stage") {
-    echo "${env.GIT_COMMIT}"
-echo "${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
+    echo "${GIT_COMMIT}"
+echo "${GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
+   
 }
 }
