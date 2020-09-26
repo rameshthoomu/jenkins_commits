@@ -23,7 +23,7 @@ stage ("clone") {
 echo "${GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
    CHANGED = sh(returnStdout: true, script: 'git diff --name-only $GIT_PREVIOUS_SUCCESSFUL_COMMIT $GIT_COMMIT ui')
    echo "====> ${CHANGED}"
-   if (-z ${CHANGED}) {
+   if (${CHANGED} == "") {
  echo “no changed”
 } 
 else {
