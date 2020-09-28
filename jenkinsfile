@@ -37,6 +37,7 @@ stage ("clone") {
    } //stage
 }
 } finally { 
+def TEST = 'failure'
 if($TEST == 'success') {
   echo "Success"
   } 
