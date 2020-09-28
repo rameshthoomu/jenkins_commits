@@ -34,16 +34,15 @@ echo "${GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
 else {
 echo "Changed"
 }
+} //stage
 }
-}
-} 
 finally { 
-if("$TEST" == 'success') {
+if($TEST == 'success') {
   echo "Success"
   } 
   else {
   echo "failure"
   }
   }
-
+}
 
