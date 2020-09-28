@@ -1,3 +1,6 @@
+try {
+def TEST = 'failure'
+
 node {
 stage ("clone") {
    sh 'env'
@@ -33,12 +36,14 @@ echo "Changed"
 }
 }
 }
-def TEST = 'failure'
+} 
+finally { 
 if("$TEST" == 'success') {
   echo "Success"
   } 
   else {
   echo "failure"
+  }
   }
 
 
