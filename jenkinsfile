@@ -35,8 +35,7 @@ else {
 echo "Changed"
 }
 } //stage
-}
-finally { 
+} finally { 
 if($TEST == 'success') {
   echo "Success"
   } 
