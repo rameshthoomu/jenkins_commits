@@ -22,7 +22,7 @@ stage ("clone") {
    dir('ui') {
     echo "${GIT_COMMIT}"
 echo "${GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
-   CHANGED = sh(returnStdout: true, script: 'git diff --name-only ${GIT_PREVIOUS_SUCCESSFUL_COMMIT} ${GIT_COMMIT} ui')
+   CHANGED = sh(returnStdout: true, script: 'git diff --name-only ${GIT_PREVIOUS_SUCCESSFUL_COMMIT} ${GIT_COMMIT} $WORKSPACE/ui')
    }
    echo "====> ${CHANGED}"
    if ("${CHANGED}".isEmpty()) {
