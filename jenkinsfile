@@ -32,6 +32,7 @@ else {
 echo "Changed"
 }
 }
+}
 def TEST = 'success'
 if("$TEST" == 'success') {
   echo "Success"
@@ -39,5 +40,5 @@ if("$TEST" == 'success') {
   else {
   echo "failure"
   }
-}
+
 
