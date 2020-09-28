@@ -33,7 +33,7 @@ echo "Changed"
 }
 }
 }
-def TEST = 'success'
+def TEST = 'failure'
 if("$TEST" == 'success') {
   echo "Success"
   } 
