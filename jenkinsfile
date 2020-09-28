@@ -24,17 +24,18 @@ stage ("clone") {
    stage("next stage") {
    dir('ui') {
     echo "${GIT_COMMIT}"
-echo "${GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
-   CHANGED = sh(returnStdout: true, script: 'git diff --name-only ${GIT_PREVIOUS_SUCCESSFUL_COMMIT} ${GIT_COMMIT} $WORKSPACE/ui')
+    echo "${GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
+    CHANGED = sh(returnStdout: true, script: 'git diff --name-only ${GIT_PREVIOUS_SUCCESSFUL_COMMIT} ${GIT_COMMIT} $WORKSPACE/ui')
    }
    echo "====> ${CHANGED}"
    if ("${CHANGED}".isEmpty()) {
- echo "no changed"
+     echo "no changed"
+   }
+   else {
+    echo "Changed"
+   }
+   } //stage
 }
-else {
-echo "Changed"
-}
-} //stage
 } finally { 
 if($TEST == 'success') {
   echo "Success"
@@ -43,5 +44,4 @@ if($TEST == 'success') {
   echo "failure"
   }
   }
-}
 
