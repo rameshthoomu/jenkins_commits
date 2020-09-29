@@ -1,6 +1,5 @@
 try {
 def TEST = 'failure'
-
 node {
 stage ("clone") {
    sh 'env'
