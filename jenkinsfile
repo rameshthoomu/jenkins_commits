@@ -38,11 +38,11 @@ stage ("clone") {
 } finally { 
 if("${TEST}" == 'success') {
   echo "Success"
-  step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: '', sendToIndividuals: false])
+  step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'rameshbabu.thoomu@gmail.com', sendToIndividuals: false])
   } 
   else {
   echo "failure"
-  step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: '', sendToIndividuals: false])
+  step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'rameshbabu.thoomu@gmail.com', sendToIndividuals: false])
 
   }
   }
