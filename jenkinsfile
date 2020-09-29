@@ -14,6 +14,8 @@ stage ("clone") {
 
       // Displaying the variables saving it as environment variable
       env.GIT_COMMIT = scmVars.GIT_COMMIT
+      env.PREVIOUS_BUILD_NUMBER = scmVars.currentBuild.previousBuild.number
+      echo "======> env.PREVIOUS_BUILD_NUMBER"
       echo "env.GIT_COMMIT"
       env.GIT_PREVIOUS_SUCCESSFUL_COMMIT = scmVars.GIT_PREVIOUS_SUCCESSFUL_COMMIT
       echo "${env.GIT_COMMIT}"
