@@ -9,17 +9,17 @@ stage ("clone") {
           branches: [[name: '${GIT_BRANCH}']],
           userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/rameshthoomu/jenkins_commits']]])
                   // Display the variable using scmVars
-      echo "scmVars.GIT_COMMIT"
-      echo "${scmVars.GIT_COMMIT}"
+      echo "******> scmVars.GIT_COMMIT"
+      echo "======> ${scmVars.GIT_COMMIT}"
 
       // Displaying the variables saving it as environment variable
       env.GIT_COMMIT = scmVars.GIT_COMMIT
       env.PREVIOUS_BUILD_NUMBER = scmVars.currentBuild.previousBuild.number
-      echo "======> env.PREVIOUS_BUILD_NUMBER"
-      echo "env.GIT_COMMIT"
+      echo "======>PRVIOUS env.PREVIOUS_BUILD_NUMBER"
+      echo "!!!!!!!! env.GIT_COMMIT"
       env.GIT_PREVIOUS_SUCCESSFUL_COMMIT = scmVars.GIT_PREVIOUS_SUCCESSFUL_COMMIT
-      echo "${env.GIT_COMMIT}"
-      echo "${scmVars.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
+      echo "GIT_COMMIT ${env.GIT_COMMIT}"
+      echo "SUCCES===> ${scmVars.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
          sh 'env'
    }
    stage("next stage") {
