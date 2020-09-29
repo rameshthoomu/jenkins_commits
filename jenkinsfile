@@ -13,15 +13,9 @@ stage ("clone") {
 
       // Displaying the variables saving it as environment variable
       env.GIT_COMMIT = scmVars.GIT_COMMIT
-      def buildNumber = Jenkins.instance.getItem('jobName').lastSuccessfulBuild.number
+      def buildNumber = scmVars.GIT_PREVIOUS_BUILD_NUMMBER
       echo " BUILD ${buildNumber}"
-      env.PREVIOUS_BUILD_NUMBER = scmVars.currentBuild.previousBuild.number
-      echo "======>PRVIOUS env.PREVIOUS_BUILD_NUMBER"
-      echo "!!!!!!!! env.GIT_COMMIT"
-      env.GIT_PREVIOUS_SUCCESSFUL_COMMIT = scmVars.GIT_PREVIOUS_SUCCESSFUL_COMMIT
-      echo "GIT_COMMIT ${env.GIT_COMMIT}"
-      echo "SUCCES===> ${scmVars.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
-         sh 'env'
+      sh 'env'
    }
    stage("next stage") {
    dir('ui') {
@@ -41,11 +35,9 @@ stage ("clone") {
 } finally { 
 if("${TEST}" == 'success') {
   echo "Success"
-emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
   } 
   else {
   echo "failure"
-emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
   }
   }
 
