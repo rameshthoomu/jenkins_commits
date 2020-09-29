@@ -1,3 +1,4 @@
+      import groovy.json.JsonSlurperClassic
 def TEST = 'failure'
 try {
 
@@ -13,9 +14,16 @@ stage ("clone") {
 
       // Displaying the variables saving it as environment variable
       env.GIT_COMMIT = scmVars.GIT_COMMIT
-      def buildNumber = Jenkins.instance.getItem('jobName').lastSuccessfulBuild.number
+    
+      
 
-      echo " BUILD ${buildNumber}"
+httpRequest url: 'https://jenkinsurl.local/job/Build/api/json', outputFile: 'output.json'
+
+def jsonFile = readFile(file: 'output.json')
+def data = new JsonSlurperClassic().parseText(jsonFile)
+latestBuildNumber = "${data.lastSuccessfulBuild.number}"
+
+      echo " BUILD ${latestBuildNumber}"
       sh 'env'
    }
    stage("next stage") {
