@@ -13,7 +13,7 @@ stage ("clone") {
 
       // Displaying the variables saving it as environment variable
       env.GIT_COMMIT = scmVars.GIT_COMMIT
-      def buildNumber = scmVars.currentBuild.getPreviousBuild()
+      def buildNumber = currentBuild.getPreviousBuild()
       echo " BUILD ${buildNumber}"
       sh 'env'
    }
