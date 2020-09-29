@@ -1,10 +1,10 @@
-try {
 def TEST = 'failure'
+try {
+
 node {
 stage ("clone") {
    sh 'env'
-
-         def scmVars = checkout([
+        def scmVars = checkout([
         $class: 'GitSCM',
           branches: [[name: '${GIT_BRANCH}']],
           userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/rameshthoomu/jenkins_commits']]])
