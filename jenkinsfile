@@ -38,12 +38,27 @@ stage ("clone") {
 } finally { 
 if("${TEST}" == 'success') {
   echo "Success"
-  step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'rameshbabu.thoomu@gmail.com', sendToIndividuals: false])
+                      emailext subject: '$DEFAULT_SUBJECT',
+                        body: '$DEFAULT_CONTENT',
+                        recipientProviders: [
+                            [$class: 'CulpritsRecipientProvider'],
+                            [$class: 'DevelopersRecipientProvider'],
+                            [$class: 'RequesterRecipientProvider']
+                        ], 
+                        replyTo: '$DEFAULT_REPLYTO',
+                        to: '$DEFAULT_RECIPIENTS'
   } 
   else {
   echo "failure"
-  step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'rameshbabu.thoomu@gmail.com', sendToIndividuals: false])
-
+                      emailext subject: '$DEFAULT_SUBJECT',
+                        body: '$DEFAULT_CONTENT',
+                        recipientProviders: [
+                            [$class: 'CulpritsRecipientProvider'],
+                            [$class: 'DevelopersRecipientProvider'],
+                            [$class: 'RequesterRecipientProvider']
+                        ], 
+                        replyTo: '$DEFAULT_REPLYTO',
+                        to: '$DEFAULT_RECIPIENTS'
   }
   }
 
