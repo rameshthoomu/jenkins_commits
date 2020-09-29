@@ -13,7 +13,8 @@ stage ("clone") {
 
       // Displaying the variables saving it as environment variable
       env.GIT_COMMIT = scmVars.GIT_COMMIT
-      def buildNumber = currentBuild.getPreviousBuild()
+      def buildNumber = Jenkins.instance.getItem('jobName').getPreviousBuild()
+
       echo " BUILD ${buildNumber}"
       sh 'env'
    }
