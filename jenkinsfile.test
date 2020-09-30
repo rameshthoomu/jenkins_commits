@@ -6,6 +6,7 @@ node  {
        checkout scm
       def lastSuccessfulCommit = getLastSuccessfulCommit()
       def currentCommit = commitHashForBuild( currentBuild.rawBuild )
+    println lastSuccessfulCommit
       if (lastSuccessfulCommit) {
         commits = sh(
           script: "git rev-list $currentCommit \"^$lastSuccessfulCommit\"",
@@ -19,6 +20,7 @@ node  {
 def getLastSuccessfulCommit() {
   def lastSuccessfulHash = null
   def lastSuccessfulBuild = currentBuild.rawBuild.getPreviousSuccessfulBuild()
+  println lastSuccessfulBuild
   if ( lastSuccessfulBuild ) {
     lastSuccessfulHash = commitHashForBuild( lastSuccessfulBuild )
   }
